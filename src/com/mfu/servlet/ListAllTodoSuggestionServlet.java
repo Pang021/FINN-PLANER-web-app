@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
-import com.mfu.dao.TodoFacade;
-import com.mfu.entity.Todo;
+import com.mfu.dao.SuggestedTodoFacade;
+import com.mfu.entity.SuggestedTodo;
 
 public class ListAllTodoSuggestionServlet extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		TodoFacade facade = new TodoFacade();
-		List<Todo> todoList = facade.getAllTodo();
+		SuggestedTodoFacade facade = new SuggestedTodoFacade();
+		List<SuggestedTodo> todoList = facade.getAllSuggestedTodo();
 		facade.closeEntityManager();
 		
 		try {

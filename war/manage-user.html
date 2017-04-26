@@ -153,49 +153,14 @@
                                     <table id="datatable" class="table table-striped table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>User ID</th>
                                                     <th>Email</th>
+                                                    <th>Password</th>
                                                     <th>Control</th>
                                                 </tr>
                                             </thead>
 
+                                            <tbody id="listTable">
 
-                                            <tbody>
-                                                 <tr>
-                                                    <td>232421421</td>
-                                                    <td>nasumap@gmail.com</td>
-                                                     <td>
-		                                             
-                                                    	<button class="btn btn-icon waves-effect waves-light btn-warning"> <i class="fa fa-wrench"></i> </button>
-                                                    	<button class="btn btn-icon waves-effect waves-light btn-danger"> <i class="fa fa-remove"></i> </button>
-                                                    
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                              
-                                                    <td>232421421</td>
-                                                    <td>nasumap@gmail.com</td>
-                                                     <td>
-		                                             
-                                                    	<button class="btn btn-icon waves-effect waves-light btn-warning"> <i class="fa fa-wrench"></i> </button>
-                                                    	<button class="btn btn-icon waves-effect waves-light btn-danger"> <i class="fa fa-remove"></i> </button>
-                                                    
-                                                    </td>
-                                                   
-                                                </tr>
-                                                <tr>
-                                               	
-                                                    <td>232421421</td>
-                                                    <td>nasumap@gmail.com</td>
-                                                     <td>
-		                                             
-                                                    	<button class="btn btn-icon waves-effect waves-light btn-warning"> <i class="fa fa-wrench"></i> </button>
-                                                    	<button class="btn btn-icon waves-effect waves-light btn-danger"> <i class="fa fa-remove"></i> </button>
-                                                    
-                                                    </td>
-                                               
-                                                </tr>
                                             </tbody>
                                         </table>
                                 </div>
@@ -357,9 +322,41 @@
 
 
         <script type="text/javascript">
-            $(document).ready(function() {
-                $('#datatable').dataTable();
-            } );
+        $(document).ready(function() {
+        	$('#datatable').dataTable();
+        	$.ajax({
+				url : "../listAllUser",
+				type : "GET",
+				dataType : "JSON",		
+				contentType : "application/json",
+				mimeType : "application/json",
+				success : function(data) {
+					var html = '';
+					
+					for (var i = 0; i < data.length; i++) {
+						html += "<tr>";
+						html += "<td>"+ data[i].email+ "</td>"
+								+ "<td>"+ data[i].password+ "</td>"
+								+ "<td> "+
+								"<button onclick=\"updateItem('"+data[i].keyString+"','"+data[i].itemName+"')\" class=\"btn btn-icon waves-effect waves-light btn-warning\"> <i class=\"fa fa-wrench\"></i> </button>"+
+								"<button onclick=\"removeItem('"+data[i].keyString+"')\" class=\"btn btn-icon waves-effect waves-light btn-danger\"> <i class=\"fa fa-remove\"></i> </button> "+
+								"</td>";
+						html += "</tr>";
+					}
+					html += "</tbody>";
+				
+					$('#listTable').html(html);
+					$('#datatable').dataTable();
+					
+				},
+				error : function(data, status, er) {
+					alert('error');
+					$("#loader").hide();
+				}
+			});
+        	
+            
+        });
         </script>
 
 

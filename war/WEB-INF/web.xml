@@ -185,6 +185,25 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/listAllTrips</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>ListAllTodoSuggestionServlet</servlet-name>
+		<servlet-class>com.mfu.servlet.ListAllTodoSuggestionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListAllTodoSuggestionServlet</servlet-name>
+		<url-pattern>/listAllTodoSuggestion</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>SaveToDoSuggestionServlet</servlet-name>
+		<servlet-class>com.mfu.servlet.SaveToDoSuggestionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListAllTripsServlet</servlet-name>
+		<url-pattern>/saveToDoSuggestion</url-pattern>
+	</servlet-mapping>
+	
 	
 	<servlet>
 		<servlet-name>LoginMobile</servlet-name>

@@ -234,9 +234,9 @@
                              html += "<td>"+(i+1)+"</td>";
                              html += "<td>"+data[i].name+"</td>";
                              html += "<td>";
-                             html += "<a href=\"manage-todo.html\"><button type=\"button\" class=\"btn btn-info waves-effect waves-light\">";
+                             html += "<button onclick=\"manageToDo('"+data[i].keyString+"')\" type=\"button\" class=\"btn btn-info waves-effect waves-light\">";
                              html += "<span class=\"btn-label\"><i class=\"fa fa-exclamation\"></i>";
-                             html += "</span>Manage To Do List</button></a>";
+                             html += "</span>Manage To Do List</button>";
                              html += "<button onclick=\"updateTrips('"+data[i].keyString+"','"+data[i].name+"')\" class=\"btn btn-icon waves-effect waves-light btn-warning\"> <i class=\"fa fa-wrench\"></i> </button>";
                              html += "<button onclick=\"removeTrips('"+data[i].keyString+"')\" class=\"btn btn-icon waves-effect waves-light btn-danger\"> <i class=\"fa fa-remove\"></i> </button>";
                              html += "</td>";
@@ -270,7 +270,11 @@
 					}
 				});
 		}
-            
+			
+            function manageToDo(key) {
+            	writeCookie("suggTripKeyToDo",key,1);
+            	document.location.href = "manage-todo.html";
+			}
             
             function updateTrips(key,name) {
             	writeCookie("tripKey",key,1);

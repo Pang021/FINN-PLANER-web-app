@@ -159,34 +159,13 @@
                                 <div class="card-box">
                                     <table id="datatable" class="table table-striped table-bordered">
                                             <thead>
-                                                <tr>
-                                                    <th>Todo ID</th>
+                                                <tr>                                                  
                                                     <th>Name</th>
                                                     <th>Control</th>
                                                 </tr>
                                             </thead>
 
-                                            <tbody>
-                                               
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Personnel Lead</td>
-                                                  
-                                                     <td>
-                                                    	<button class="btn btn-icon waves-effect waves-light btn-warning"> <i class="fa fa-wrench"></i> </button>
-                                                    	<button class="btn btn-icon waves-effect waves-light btn-danger"> <i class="fa fa-remove"></i> </button>
-                                                   </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>                      
-                                                    <td>Collect leaf tea</td>
-                                                   <td> 
-                                                    	<button class="btn btn-icon waves-effect waves-light btn-warning"> <i class="fa fa-wrench"></i> </button>
-                                                    	<button class="btn btn-icon waves-effect waves-light btn-danger"> <i class="fa fa-remove"></i> </button>                                             
-                                                    </td>
-                                                   
-                                                </tr>
+                                            <tbody id="listTable"> 
                                                                                            
                                             </tbody>
                                         </table>
@@ -234,34 +213,37 @@
 
         <script type="text/javascript">
         $(document).ready(function() {
+        	
+        	var suggTripKeyToDo = readCookie("suggTripKeyToDo");
+        	
+        	$('#datatable').dataTable();
         	$.ajax({
-				url : "../listAllTodo",
+				url : "../listAllTodoSuggestion",
 				type : "GET",
 				dataType : "JSON",		
 				contentType : "application/json",
 				mimeType : "application/json",
 				success : function(data) {
+					
 					var html = '';
 					
-					html += "<thead>";
-					html += "<tr>" + "<th>Name</th>"
-							+ "<th>Control</th>";
-					html += "</tr>";
-					html += "</thead>";
-					html += "<tbody>";
-					for (var i = 0; i < data.length; i++) {
-						html += "<tr>";
-						html += "<td>"+ data[i].todoName+ "</td>"
-								+ "<td> "+
-								"<button onclick=\"updateTodo('"+data[i].keyString+"','"+data[i].name+"')\" class=\"btn btn-icon waves-effect waves-light btn-warning\"> <i class=\"fa fa-wrench\"></i> </button>"+
-								"<button onclick=\"removeTodo('"+data[i].keyString+"')\" class=\"btn btn-icon waves-effect waves-light btn-danger\"> <i class=\"fa fa-remove\"></i> </button> "+
-								"</td>";
-						html += "</tr>";
-					}
-					html += "</tbody>";
+
+						
+						for (var i = 0; i < data.length; i++) {
+							if(data[i].suggestedTripsKey == suggTripKeyToDo){
+							html += "<tr>";
+							html += "<td>"+ data[i].name+ "</td>"
+									+ "<td> "+
+									"<button onclick=\"updateTodo('"+data[i].keyString+"','"+data[i].name+"')\" class=\"btn btn-icon waves-effect waves-light btn-warning\"> <i class=\"fa fa-wrench\"></i> </button>"+
+									"<button onclick=\"removeTodo('"+data[i].keyString+"')\" class=\"btn btn-icon waves-effect waves-light btn-danger\"> <i class=\"fa fa-remove\"></i> </button> "+
+									"</td>";
+							html += "</tr>";
+							}
+						}
+						
+						
+					$('#listTable').html(html);
 				
-					$('.listTable').html(html);
-					$('#datatable').dataTable();
 					
 				},
 				error : function(data, status, er) {
