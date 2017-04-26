@@ -15,18 +15,11 @@ import com.mfu.entity.SuggestedTodo;
 public class SaveToDoSuggestionServlet extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-//		StringBuffer jb = new StringBuffer();
-//		 String line = null;
-//		 try {
-//			    BufferedReader reader = req.getReader();
-//			    while ((line = reader.readLine()) != null)
-//			      jb.append(line);
-//			  } catch (Exception e) { /*report an error*/ }
-//		 System.out.println("#"+jb+"#");
+		
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			SuggestedTodo todo = mapper.readValue(req.getReader(), SuggestedTodo.class);
-			System.out.println(todo.getName());
+			System.out.println("Calling save todo: "+todo.getName());
 		
 			SuggestedTodoFacade facade = new SuggestedTodoFacade();
 	

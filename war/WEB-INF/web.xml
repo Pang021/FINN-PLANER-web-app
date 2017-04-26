@@ -200,20 +200,9 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-class>com.mfu.servlet.SaveToDoSuggestionServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>ListAllTripsServlet</servlet-name>
-		<url-pattern>/saveToDoSuggestion</url-pattern>
+		<servlet-name>SaveToDoSuggestionServlet</servlet-name>
+		<url-pattern>/saveTodoSuggestion</url-pattern>
 	</servlet-mapping>
-	
-	
-	<servlet>
-		<servlet-name>LoginMobile</servlet-name>
-		<servlet-class>com.mfu.servlet.LoginMobile</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>LoginMobile</servlet-name>
-		<url-pattern>/loginMobile</url-pattern>
-	</servlet-mapping>
-	
 	
 	<servlet>
 		<servlet-name>SaveUserServlet</servlet-name>
@@ -277,7 +266,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>LoginMobile</servlet-name>
 		<url-pattern>/LoginMobile</url-pattern>
 	</servlet-mapping>
-	
 	
 	
 	<welcome-file-list>
