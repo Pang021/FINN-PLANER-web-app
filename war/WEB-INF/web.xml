@@ -24,6 +24,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>FindPackingListByTripKeyServlet</servlet-name>
+		<servlet-class>com.mfu.servlet.FindPackingListByTripKeyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FindPackingListByTripKeyServlet</servlet-name>
+		<url-pattern>/findPackingListByTripKey</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>FindTodoByTripKeyServlet</servlet-name>
+		<servlet-class>com.mfu.servlet.FindTodoByTripKeyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FindTodoByTripKeyServlet</servlet-name>
+		<url-pattern>/findTodoByTripKey</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>DeletePackingListServler</servlet-name>
 		<servlet-class>com.mfu.servlet.DeletePackingListServlet</servlet-class>
 	</servlet>

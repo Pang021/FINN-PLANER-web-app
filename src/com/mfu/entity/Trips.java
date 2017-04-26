@@ -1,14 +1,9 @@
 package com.mfu.entity;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 
@@ -22,11 +17,15 @@ public class Trips {
 	private String date;
 	private String status;
 	private String userKey;
-	@OneToMany(mappedBy = "trips", cascade = { CascadeType.ALL })
-	private List<Todo> todo;
 
-	@OneToMany(mappedBy = "trips", cascade = { CascadeType.ALL })
-	private List<PackingList> packingList;
+	public String getKeyString() {
+		return KeyFactory.keyToString(key);
+	}
+
+	public void setKeyString(String key) {
+		this.key = KeyFactory.stringToKey(key);
+
+	}
 
 	public Key getKey() {
 		return key;
@@ -60,31 +59,6 @@ public class Trips {
 		this.status = status;
 	}
 
-	public List<Todo> getTodo() {
-		return todo;
-	}
-
-	public void setTodo(List<Todo> todo) {
-		this.todo = todo;
-	}
-
-	public List<PackingList> getPackingList() {
-		return packingList;
-	}
-
-	public void setPackingList(List<PackingList> packingList) {
-		this.packingList = packingList;
-	}
-
-	public String getKeyString() {
-		return KeyFactory.keyToString(key);
-	}
-
-	public void setKeyString(String key) {
-		this.key = KeyFactory.stringToKey(key);
-
-	}
-
 	public String getUserKey() {
 		return userKey;
 	}
@@ -92,7 +66,5 @@ public class Trips {
 	public void setUserKey(String userKey) {
 		this.userKey = userKey;
 	}
-	
-	
 
 }

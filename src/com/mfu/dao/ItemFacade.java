@@ -10,6 +10,7 @@
 	import javax.persistence.Query;
 
 	import com.mfu.entity.Item;
+import com.mfu.entity.PackingList;
 
 	public class ItemFacade {
 

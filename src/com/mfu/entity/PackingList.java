@@ -1,13 +1,9 @@
 package com.mfu.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
-
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 
@@ -17,13 +13,15 @@ public class PackingList {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Key key;
+	
+	// If user define the name of item
 	private String itemName;
+	
+	// If user select item from the suggestion item 
 	private String itemKey;
+	
 	private String tripKey;
 	private int quality;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Trips trips;
 
 	public Key getKey() {
 		return key;
@@ -63,14 +61,6 @@ public class PackingList {
 
 	public void setQuality(int quality) {
 		this.quality = quality;
-	}
-
-	public Trips getTrips() {
-		return trips;
-	}
-
-	public void setTrips(Trips trips) {
-		this.trips = trips;
 	}
 
 	public String getKeyString() {

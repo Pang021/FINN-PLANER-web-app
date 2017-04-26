@@ -48,6 +48,22 @@ public class PackingListFacade {
 		return packingList;
 	}
 	
+
+	public List<PackingList> findPackingListByTripKey(String key) {
+		List<PackingList> packingList  = null;
+		
+		try {
+			Query q = em.createQuery("select p from PackingList p where p.tripKey=:key");
+			q.setParameter("key", key);
+			packingList = q.getResultList();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return packingList;
+	}
+	
 	public void savePackingList(PackingList packingList) {
 		
 		try {

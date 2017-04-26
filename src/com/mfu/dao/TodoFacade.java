@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import com.mfu.entity.Todo;
+import com.mfu.entity.Trips;
 
 public class TodoFacade {
 
@@ -31,6 +32,21 @@ public class TodoFacade {
 		}
 		
 		return todo;
+	}
+	
+	public List<Todo> findTodoByTripKey(String key) {
+		List<Todo> todos = null;
+		
+		try {
+			Query q = em.createQuery("select p from Todo p where p.tripKey = :key");
+			q.setParameter("key", key);
+			todos = q.getResultList();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return todos;
 	}
 	
 	public Todo findTodoByKey(String key) {
