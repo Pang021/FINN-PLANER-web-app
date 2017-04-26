@@ -187,6 +187,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	
 	
 	<servlet>
+		<servlet-name>LoginMobile</servlet-name>
+		<servlet-class>com.mfu.servlet.LoginMobile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginMobile</servlet-name>
+		<url-pattern>/loginMobile</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
 		<servlet-name>SaveUserServlet</servlet-name>
 		<servlet-class>com.mfu.servlet.SaveUserServlet</servlet-class>
 	</servlet>

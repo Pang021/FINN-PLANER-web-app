@@ -15,6 +15,7 @@ import com.mfu.entity.User;
 public class LoginMobile extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
+		System.out.println("Login Service Calling");
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			User user = mapper.readValue(req.getReader(), User.class);
